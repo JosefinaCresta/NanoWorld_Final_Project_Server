@@ -1,0 +1,9 @@
+package com.ironhack.finalprojectserver.repository;
+
+
+import com.ironhack.finalprojectserver.model.Role;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RoleRepository extends JpaRepository<Role,Long> {
+    Role findByName(String name);
+}
