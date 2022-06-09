@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Optional;
+
 @Service
 public class CalculatorService {
     @Autowired
@@ -21,12 +23,26 @@ public class CalculatorService {
                 HttpStatus.NOT_FOUND, "Calculator not found"));
     }
 
+
+
+    public Calculator saveCalculator(Calculator calculator) {
+        if (calculator.getId() != null) {
+            Optional<Calculator> optionalCalculator = calculatorRepository.findById(calculator.getId());
+            if (optionalCalculator.isPresent())
+                throw new ResponseStatusException(
+                        HttpStatus.UNPROCESSABLE_ENTITY, "Calculator with id " + calculator.getId() + " already exist");
+        }
+        Calculator calculator1 = calculatorRepository.save(calculator);
+        return calculator1;
+
+    }
+
+
     public void setCalculator(CalculatorDTO calculator){
         Calculator newCalculator = new Calculator();
         newCalculator.setXc(calculator.getXc());
         newCalculator.setLreal(calculator.isLreal());
         newCalculator.setKpts(calculator.getKpts());
-        newCalculator.setGamma(calculator.isGamma());
         newCalculator.setIbrion(calculator.getIbrion());
         newCalculator.setEncut(calculator.getEncut());
         newCalculator.setEdiffg(calculator.getEdiffg());

@@ -1,5 +1,6 @@
 package com.ironhack.finalprojectserver.service.interfaces;
 
+import com.ironhack.finalprojectserver.DTO.ProjectDTO;
 import com.ironhack.finalprojectserver.model.Project;
 
 public interface ProjectServiceInterface {

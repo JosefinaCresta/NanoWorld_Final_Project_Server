@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.ElementCollection;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Data
@@ -11,9 +14,10 @@ import java.util.List;
 @AllArgsConstructor
 public class ClusterDTO {
     private String formula;
-    private int natom;
-    private float energy;
-    private float forces;
-    private float magmon;
+    private int natoms;
+    private double energy;
+    @ElementCollection
+    private List<Double> forces;
+    private double magmon;
     private Long projectId;
 }

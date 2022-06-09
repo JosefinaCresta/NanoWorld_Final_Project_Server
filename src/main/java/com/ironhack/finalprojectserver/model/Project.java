@@ -20,10 +20,15 @@ public class Project {
     private String description;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="calculator_id")
     private Calculator calculator;
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Cluster> clusters;
+
+    public Project(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
 }

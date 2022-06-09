@@ -1,6 +1,7 @@
 package com.ironhack.finalprojectserver.service.impl;
 
 
+import com.ironhack.finalprojectserver.model.Role;
 import com.ironhack.finalprojectserver.model.User;
 import com.ironhack.finalprojectserver.repository.RoleRepository;
 import com.ironhack.finalprojectserver.repository.UserRepository;
@@ -57,5 +58,20 @@ public class UserService implements UserServiceInterface, UserDetailsService {
             });
             return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
         }
+    }
+
+    @Override
+    public Role saveRole(Role role) {
+        log.info("Saving new role {} to the database", role.getName());
+        return roleRepository.save(role);
+    }
+
+    @Override
+    public void addRoleToUser(String email, String roleName) {
+        log.info("Adding role {} to user {}", roleName, email);
+        User user = userRepository.findByEmail(email);
+        Role role = roleRepository.findByName(roleName);
+        user.getRoles().add(role);
+        userRepository.save(user);
     }
 }

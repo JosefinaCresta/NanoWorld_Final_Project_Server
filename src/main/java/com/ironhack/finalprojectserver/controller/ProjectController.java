@@ -1,5 +1,6 @@
 package com.ironhack.finalprojectserver.controller;
 
+import com.ironhack.finalprojectserver.DTO.ProjectDTO;
 import com.ironhack.finalprojectserver.model.Project;
 import com.ironhack.finalprojectserver.repository.ProjectRepository;
 import com.ironhack.finalprojectserver.service.impl.ProjectService;

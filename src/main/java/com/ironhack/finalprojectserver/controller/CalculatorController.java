@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 public class CalculatorController {
@@ -18,6 +20,12 @@ public class CalculatorController {
 
     @Autowired
     private CalculatorService calculatorService;
+
+    @GetMapping("/calculators")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Calculator> getCalculators() {
+        return calculatorRepository.findAll();
+    }
 
     @GetMapping("/calculators/{id}")
     @ResponseStatus(HttpStatus.OK)

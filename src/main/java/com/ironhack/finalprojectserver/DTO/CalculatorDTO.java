@@ -1,9 +1,13 @@
 package com.ironhack.finalprojectserver.DTO;
 
+import com.ironhack.finalprojectserver.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.ElementCollection;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Data
@@ -12,11 +16,11 @@ import java.util.List;
 public class CalculatorDTO {
     private String xc;
     private boolean lreal=false;
-    private Integer kpts;
-    private boolean gamma;
+    @ElementCollection
+    private List<Integer> kpts;
     private int ibrion;
-    private float encut;
-    private float ediffg;
+    private double encut;
+    private double ediffg;
     private int nsw;
     private int ispin;
     private int ncore;
