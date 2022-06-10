@@ -19,7 +19,7 @@ public class Project {
     private String title;
     private String description;
 
-    @JsonIgnore
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="calculator_id")
     private Calculator calculator;

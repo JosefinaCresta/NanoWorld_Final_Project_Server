@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -35,8 +36,13 @@ public class CalculatorController {
 
     @PostMapping("/calculators")
     @ResponseStatus(HttpStatus.CREATED)
-    public void setCalculator(@RequestBody CalculatorDTO calculator){
-        calculatorService.setCalculator(calculator);
+    public void addCalculator(@RequestBody @Valid Calculator calculator){
+        calculatorService.saveCalculator(calculator);
+    }
+    @PostMapping("/calculators/toproject")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void setCalculator(@RequestBody Long calculatorId){
+        calculatorService.setCalculator(calculatorId);
     }
 
 

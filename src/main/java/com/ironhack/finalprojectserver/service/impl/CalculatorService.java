@@ -36,9 +36,11 @@ public class CalculatorService {
         return calculator1;
 
     }
+    public void setCalculator(Long calculatorId){
 
+    }
 
-    public void setCalculator(CalculatorDTO calculator){
+   /* public void setCalculator(CalculatorDTO calculator){
         Calculator newCalculator = new Calculator();
         newCalculator.setXc(calculator.getXc());
         newCalculator.setLreal(calculator.isLreal());
@@ -51,7 +53,7 @@ public class CalculatorService {
         newCalculator.setNcore(calculator.getNcore());
         newCalculator.setCommand(calculator.getCommand());
         calculatorRepository.save(newCalculator);
-    }
+    }*/
 
     public void deleteCalculator(Long id) {
         Calculator calculatorFromDB = calculatorRepository.findById(id).orElseThrow(() -> new ResponseStatusException(

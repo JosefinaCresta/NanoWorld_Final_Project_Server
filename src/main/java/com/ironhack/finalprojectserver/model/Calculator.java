@@ -1,5 +1,6 @@
 package com.ironhack.finalprojectserver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,6 +32,7 @@ public class Calculator {
     private int ncore;
     private String command;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "calculator", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Project> projects;
 }
