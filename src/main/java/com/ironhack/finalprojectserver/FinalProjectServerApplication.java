@@ -2,10 +2,12 @@ package com.ironhack.finalprojectserver;
 
 import com.ironhack.finalprojectserver.DTO.CalculatorDTO;
 import com.ironhack.finalprojectserver.DTO.ClusterDTO;
+import com.ironhack.finalprojectserver.DTO.ProjectDTO;
 import com.ironhack.finalprojectserver.model.Calculator;
 import com.ironhack.finalprojectserver.model.Project;
 import com.ironhack.finalprojectserver.model.Role;
 import com.ironhack.finalprojectserver.model.User;
+import com.ironhack.finalprojectserver.repository.CalculatorRepository;
 import com.ironhack.finalprojectserver.service.impl.CalculatorService;
 import com.ironhack.finalprojectserver.service.impl.ClusterService;
 import com.ironhack.finalprojectserver.service.impl.ProjectService;
@@ -47,7 +49,8 @@ public class FinalProjectServerApplication {
 
 	@Bean
 	CommandLineRunner run(UserService userService, ProjectService projectService,
-						  ClusterService clusterService, CalculatorService calculatorService){
+						  ClusterService clusterService, CalculatorService calculatorService,
+						  CalculatorRepository calculatorRepository){
 		return args -> {
 			userService.saveRole(new Role(null, "ROLE_TEACHER"));
 			userService.saveRole(new Role(null, "ROLE_STUDENT"));
@@ -64,15 +67,33 @@ public class FinalProjectServerApplication {
 			/*calculatorService.setCalculator(new CalculatorDTO("PBE", false, "(1, 1, 1)", 3,
 					300, -0.05, 50, 1, 4, "mpirun -np 16 vasp_std"));*/
 
-			Calculator calculator = calculatorService.saveCalculator(new Calculator(1L,"PBE", false, List.of(1, 1, 1), 3,
+			 calculatorService.saveCalculator(new Calculator(1L,"PBE", false, List.of(1, 1, 1), 3,
 					300, -0.05, 50, 1, 4, "mpirun -np 16 vasp_std",  new ArrayList<>()));
-			Calculator calculator1 = calculatorService.saveCalculator(new Calculator(2L,"PBE", false, List.of(1, 1, 1), 3,
-					300, -0.05, 100, 1, 4, "mpirun -np 16 vasp_std",  new ArrayList<>()));
+			calculatorService.saveCalculator(new Calculator(2L,"PBE", false, List.of(1, 1, 1), 3,
+					300, -0.05, 100, 1, 4, "mpirun -np 20 vasp_std",  new ArrayList<>()));
+			calculatorService.saveCalculator(new Calculator(3L,"PBE", false, List.of(1, 1, 1), 3,
+					300, -0.05, 100, 1, 4, "mpirun ",  new ArrayList<>()));
 
-			projectService.saveProject(new Project(1L, "3|4|Au|Calc1", "description1",
+			calculatorService.saveCalculator(new Calculator(4L,"PBE", false, List.of(1, 1, 1), 3,
+					300, -0.05, 100, 1, 4, "1240 vasp_std",  new ArrayList<>()));
+
+
+			Calculator calculator = calculatorService.getCalculatorById(1L);
+			Calculator calculator1 = calculatorService.getCalculatorById(2L);
+			Calculator calculator2 = calculatorService.getCalculatorById(3L);
+			Calculator calculator3 = calculatorService.getCalculatorById(4L);
+
+
+
+		/*	projectService.saveProject(new Project(1L, "3|4|Au|Calc1", "description1",
 					calculator, new ArrayList<>()));
 			projectService.saveProject(new Project(2L, "3|4|Au|Calc2", "description2",
-					calculator, new ArrayList<>()));
+					calculator, new ArrayList<>()));*/
+
+			projectService.saveProject(new ProjectDTO( "3|4|Au|Calc1", "description1",
+					1L));
+			projectService.saveProject(new ProjectDTO("3|4|Au|Calc2", "description2",
+					2L));
 
 			clusterService.saveCluster(new ClusterDTO("3Au", 3, -4.24721533,
 					List.of(0.02467511, -0.01682173, 0.01266294,

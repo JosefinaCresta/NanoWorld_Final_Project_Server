@@ -5,6 +5,7 @@ import com.ironhack.finalprojectserver.model.Calculator;
 import com.ironhack.finalprojectserver.model.Project;
 import com.ironhack.finalprojectserver.repository.CalculatorRepository;
 import com.ironhack.finalprojectserver.repository.ProjectRepository;
+import com.ironhack.finalprojectserver.service.interfaces.CalculatorServiceInterface;
 import com.ironhack.finalprojectserver.service.interfaces.ProjectServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,30 +23,26 @@ public class ProjectService implements ProjectServiceInterface {
     @Autowired
     private CalculatorRepository calculatorRepository;
 
+    @Autowired
+    private CalculatorServiceInterface calculatorService;
+
     public Project findById(Long id) {
         return projectRepository.findById(id).orElseThrow(() -> new ResponseStatusException(
                 HttpStatus.NOT_FOUND, "Project not found"));
     }
 
-    public void saveProject(Project project) {
-        if (project.getId() != null) {
-            Optional<Project> optionalProject = projectRepository.findById(project.getId());
-            if (optionalProject.isPresent())
-                throw new ResponseStatusException(
-                        HttpStatus.UNPROCESSABLE_ENTITY, "Project with id " + project.getId() + " already exist");
+    public void saveProject(ProjectDTO project) {
+        Calculator calculatorFromId = calculatorService.getCalculatorById(project.getCalculatorId());
+        try {
+            projectRepository.save(new Project(
+                    project.getTitle(),
+                    project.getDescription(),
+                    calculatorFromId
+            ));
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Malformed Project");
         }
-        System.out.println("HERE "+project);
-        projectRepository.save(project);
     }
-
-   /* public void update(Long id, Project project) {
-        Project projectFromDB = projectRepository.findById(id).orElseThrow(() -> new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Project is not found"));
-
-        project.setCalculator(projectFromDB.getCalculator());
-        projectRepository.save(projectFromDB);
-    }*/
-
 
     public void update(Long id, Project project) {
         Optional<Project> foundProject = projectRepository.findById(id);

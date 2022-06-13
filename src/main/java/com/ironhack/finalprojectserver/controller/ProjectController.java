@@ -35,7 +35,7 @@ public class ProjectController {
 
     @PostMapping("/projects")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addProject(@RequestBody @Valid Project project){
+    public void addProject(@RequestBody @Valid ProjectDTO project){
         projectService.saveProject(project);
     }
 

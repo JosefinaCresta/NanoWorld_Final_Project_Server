@@ -5,13 +5,14 @@ import com.ironhack.finalprojectserver.model.Calculator;
 import com.ironhack.finalprojectserver.model.Cluster;
 import com.ironhack.finalprojectserver.repository.ClusterRepository;
 import com.ironhack.finalprojectserver.repository.ProjectRepository;
+import com.ironhack.finalprojectserver.service.interfaces.ClusterServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
-public class ClusterService {
+public class ClusterService implements ClusterServiceInterface {
 
     @Autowired
     private ProjectRepository projectRepository;

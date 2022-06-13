@@ -22,8 +22,6 @@ public class Calculator {
     private boolean lreal;
     @ElementCollection
     private List<Integer> kpts;
-   /* private Collection<Integer> kpts = new ArrayList<>();*/
-    /*private String kpts;*/
     private int ibrion;
     private double encut;
     private double ediffg;

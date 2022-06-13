@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Entity
@@ -16,7 +17,9 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty(message = "Provide a title")
     private String title;
+    @NotEmpty(message = "Provide a description")
     private String description;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -26,10 +29,13 @@ public class Project {
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Cluster> clusters;
 
-    public Project(String title, String description) {
+    public Project(String title, String description, Calculator calculator) {
         this.title = title;
         this.description = description;
+        this.calculator = calculator;
     }
+
+
 
     @Override
     public String toString() {

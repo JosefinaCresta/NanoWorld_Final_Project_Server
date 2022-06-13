@@ -5,7 +5,7 @@ import com.ironhack.finalprojectserver.model.Calculator;
 import com.ironhack.finalprojectserver.model.Project;
 
 public interface CalculatorServiceInterface {
-    Calculator findById(Long id);
+    Calculator getCalculatorById(Long id);
     void setCalculator(Long calculatorId);
     void saveCalculator(Calculator calculator);
 
