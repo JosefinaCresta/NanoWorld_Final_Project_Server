@@ -28,6 +28,7 @@ public class ProjectService implements ProjectServiceInterface {
                 throw new ResponseStatusException(
                         HttpStatus.UNPROCESSABLE_ENTITY, "Project with id " + project.getId() + " already exist");
         }
+        System.out.println("HERE "+project);
         projectRepository.save(project);
     }
 
@@ -41,6 +42,8 @@ public class ProjectService implements ProjectServiceInterface {
     public void deleteProject(Long id) {
         Project projectFromDB = projectRepository.findById(id).orElseThrow(() -> new ResponseStatusException(
                 HttpStatus.NOT_FOUND, "Project not found"));
-        projectRepository.deleteById(id);
+        projectFromDB.setCalculator(null);
+        projectRepository.save(projectFromDB);
+            projectRepository.deleteById(id);
     }
 }

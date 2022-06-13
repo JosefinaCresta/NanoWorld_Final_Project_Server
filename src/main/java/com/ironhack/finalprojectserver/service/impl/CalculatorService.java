@@ -58,5 +58,7 @@ public class CalculatorService {
     public void deleteCalculator(Long id) {
         Calculator calculatorFromDB = calculatorRepository.findById(id).orElseThrow(() -> new ResponseStatusException(
                 HttpStatus.NOT_FOUND, "Calculator not found"));
+        calculatorRepository.delete(calculatorFromDB);
     }
+
 }

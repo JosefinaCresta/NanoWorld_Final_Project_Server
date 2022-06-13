@@ -39,7 +39,7 @@ public class ProjectController {
         projectService.saveProject(project);
     }
 
-    @PutMapping("/projects/{id}")
+    @PatchMapping("/projects/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateProject(@PathVariable Long id,@RequestBody @Valid Project project){
         projectService.update(id, project);

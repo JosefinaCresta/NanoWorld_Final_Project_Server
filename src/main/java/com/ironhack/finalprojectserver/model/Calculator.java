@@ -33,6 +33,6 @@ public class Calculator {
     private String command;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "calculator", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "calculator",  fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Project> projects;
 }

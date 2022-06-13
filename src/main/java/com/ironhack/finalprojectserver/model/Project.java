@@ -19,9 +19,8 @@ public class Project {
     private String title;
     private String description;
 
-
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="calculator_id")
+    @JoinColumn(name="calculator_id", nullable = true)
     private Calculator calculator;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -30,5 +29,14 @@ public class Project {
     public Project(String title, String description) {
         this.title = title;
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }
