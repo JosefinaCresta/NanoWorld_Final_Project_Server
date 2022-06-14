@@ -2,9 +2,11 @@ package com.ironhack.finalprojectserver.controller;
 
 import com.google.gson.Gson;
 import com.ironhack.finalprojectserver.DTO.UserVerifyDTO;
+import com.ironhack.finalprojectserver.DTO.UserWithRoleDTO;
 import com.ironhack.finalprojectserver.model.User;
 import com.ironhack.finalprojectserver.repository.UserRepository;
 import com.ironhack.finalprojectserver.service.impl.UserService;
+import com.ironhack.finalprojectserver.service.interfaces.UserServiceInterface;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,13 +23,23 @@ public class AuthController {
     private UserService userService;
 
     @Autowired
+    private UserServiceInterface userServiceInterface;
+
+    @Autowired
     private UserRepository userRepository;
 
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
     public User saveUser(@RequestBody @Valid User user) {
-        return userService.saveUser(user);
+        return userServiceInterface.saveUser(user);
     }
+
+    @PostMapping("/signup/withRole")
+    @ResponseStatus(HttpStatus.CREATED)
+    public User saveUserWithRole(@RequestBody @Valid UserWithRoleDTO userSignupWithRole) {
+        return userServiceInterface.saveUserWithRole(userSignupWithRole);
+    }
+
 
     @GetMapping("/verify")
     @ResponseStatus(HttpStatus.OK)

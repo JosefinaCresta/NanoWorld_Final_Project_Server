@@ -1,6 +1,7 @@
 package com.ironhack.finalprojectserver.service.impl;
 
 
+import com.ironhack.finalprojectserver.DTO.UserWithRoleDTO;
 import com.ironhack.finalprojectserver.model.Role;
 import com.ironhack.finalprojectserver.model.User;
 import com.ironhack.finalprojectserver.repository.RoleRepository;
@@ -26,6 +27,7 @@ public class UserService implements UserServiceInterface, UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -35,6 +37,16 @@ public class UserService implements UserServiceInterface, UserDetailsService {
     public User saveUser(User userSignupDTO) {
         log.info("Saving a new user {} inside of the database", userSignupDTO.getName());
         User user = new User(userSignupDTO.getName(), userSignupDTO.getEmail(), userSignupDTO.getPassword());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepository.save(user);
+    }
+
+    /*NEW SAVE USER WITH ROLE*/
+    public User saveUserWithRole(UserWithRoleDTO userSignupWithRole) {
+        log.info("Saving a new user {} inside of the database", userSignupWithRole.getName());
+        User user = new User(userSignupWithRole.getName(), userSignupWithRole.getEmail(), userSignupWithRole.getPassword());
+        userRepository.save(user);
+        addRoleToUser(user.getEmail(), userSignupWithRole.getRole());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
