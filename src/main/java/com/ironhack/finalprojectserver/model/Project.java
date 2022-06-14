@@ -22,7 +22,12 @@ public class Project {
     @NotEmpty(message = "Provide a description")
     private String description;
 
+    /*@ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "creator_id")
+    @NotEmpty(message = "Provide Creator Name")
+    private User creator;*/
 
+    private String creator;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="calculator_id", nullable = true)
     private Calculator calculator;

@@ -54,6 +54,7 @@ public class FinalProjectServerApplication {
 		return args -> {
 			userService.saveRole(new Role(null, "ROLE_TEACHER"));
 			userService.saveRole(new Role(null, "ROLE_STUDENT"));
+			userService.saveRole(new Role(null, "ROLE_ADMIN"));
 
 			userService.saveUser(new User(null, "Raymond", "ray@gmail.com", "P@ssw0rd", new ArrayList<>()));
 			userService.saveUser(new User(null, "Shaun", "shaun@gmail.com", "P@ssw0rd", new ArrayList<>()));
@@ -62,12 +63,13 @@ public class FinalProjectServerApplication {
 			userService.addRoleToUser("ray@gmail.com", "ROLE_TEACHER");
 			userService.addRoleToUser("shaun@gmail.com", "ROLE_TEACHER");
 			userService.addRoleToUser("jofi@gmail.com", "ROLE_STUDENT");
+			userService.addRoleToUser("ray@gmail.com", "ROLE_ADMIN");
 
 
 			/*calculatorService.setCalculator(new CalculatorDTO("PBE", false, "(1, 1, 1)", 3,
 					300, -0.05, 50, 1, 4, "mpirun -np 16 vasp_std"));*/
 
-			 calculatorService.saveCalculator(new Calculator(1L,"PBE", false, List.of(1, 1, 1), 3,
+			calculatorService.saveCalculator(new Calculator(1L,"PBE", false, List.of(1, 1, 1), 3,
 					300, -0.05, 50, 1, 4, "mpirun -np 16 vasp_std",  new ArrayList<>()));
 			calculatorService.saveCalculator(new Calculator(2L,"PBE", false, List.of(1, 1, 1), 3,
 					300, -0.05, 100, 1, 4, "mpirun -np 20 vasp_std",  new ArrayList<>()));
