@@ -22,6 +22,7 @@ public class Project {
     @NotEmpty(message = "Provide a description")
     private String description;
 
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="calculator_id", nullable = true)
     private Calculator calculator;
