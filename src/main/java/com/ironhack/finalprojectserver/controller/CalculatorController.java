@@ -1,10 +1,9 @@
 package com.ironhack.finalprojectserver.controller;
 
-import com.ironhack.finalprojectserver.DTO.CalculatorDTO;
-import com.ironhack.finalprojectserver.DTO.ClusterDTO;
+
 import com.ironhack.finalprojectserver.model.Calculator;
-import com.ironhack.finalprojectserver.model.Project;
 import com.ironhack.finalprojectserver.repository.CalculatorRepository;
+import com.ironhack.finalprojectserver.repository.ProjectRepository;
 import com.ironhack.finalprojectserver.service.impl.CalculatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/api")
@@ -21,6 +21,9 @@ public class CalculatorController {
 
     @Autowired
     private CalculatorService calculatorService;
+
+    @Autowired
+    private ProjectRepository projectRepository;
 
     @GetMapping("/calculators")
     @ResponseStatus(HttpStatus.OK)
@@ -34,16 +37,26 @@ public class CalculatorController {
         return calculatorService.findById(calculatorId);
     }
 
+    @GetMapping("/calculators/projects/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Integer getCountOfCalculatorById(@PathVariable(name = "id") Long calculatorId) {
+        Integer count = projectRepository.countByCalculatorId(calculatorId);
+        System.out.println("CUENTA" + count);
+        return projectRepository.countByCalculatorId(calculatorId);
+    }
+
+
+
     @PostMapping("/calculators")
     @ResponseStatus(HttpStatus.CREATED)
     public void addCalculator(@RequestBody @Valid Calculator calculator){
         calculatorService.saveCalculator(calculator);
     }
-    @PostMapping("/calculators/toproject")
+/*    @PostMapping("/calculators/toproject")
     @ResponseStatus(HttpStatus.CREATED)
     public void setCalculator(@RequestBody Long calculatorId){
         calculatorService.setCalculator(calculatorId);
-    }
+    }*/
 
 
     @DeleteMapping("/calculators/{id}")

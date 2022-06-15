@@ -46,24 +46,11 @@ public class CalculatorService implements CalculatorServiceInterface {
         }
     }
 
-    public void setCalculator(Long calculatorId){
+/*    public void setCalculator(Long calculatorId){
 
-    }
-
-   /* public void setCalculator(CalculatorDTO calculator){
-        Calculator newCalculator = new Calculator();
-        newCalculator.setXc(calculator.getXc());
-        newCalculator.setLreal(calculator.isLreal());
-        newCalculator.setKpts(calculator.getKpts());
-        newCalculator.setIbrion(calculator.getIbrion());
-        newCalculator.setEncut(calculator.getEncut());
-        newCalculator.setEdiffg(calculator.getEdiffg());
-        newCalculator.setNsw(calculator.getNsw());
-        newCalculator.setIspin(calculator.getIspin());
-        newCalculator.setNcore(calculator.getNcore());
-        newCalculator.setCommand(calculator.getCommand());
-        calculatorRepository.save(newCalculator);
     }*/
+
+
 
     public void deleteCalculator(Long id) {
         Calculator calculatorFromDB = calculatorRepository.findById(id).orElseThrow(() -> new ResponseStatusException(
