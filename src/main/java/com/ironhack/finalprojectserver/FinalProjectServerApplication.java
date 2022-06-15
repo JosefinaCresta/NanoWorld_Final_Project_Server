@@ -52,7 +52,7 @@ public class FinalProjectServerApplication {
 						  ClusterService clusterService, CalculatorService calculatorService,
 						  CalculatorRepository calculatorRepository){
 		return args -> {
-			userService.saveRole(new Role(null, "ROLE_TEACHER"));
+			/*userService.saveRole(new Role(null, "ROLE_TEACHER"));
 			userService.saveRole(new Role(null, "ROLE_STUDENT"));
 			userService.saveRole(new Role(null, "ROLE_ADMIN"));
 
@@ -63,16 +63,16 @@ public class FinalProjectServerApplication {
 			userService.addRoleToUser("ray@gmail.com", "ROLE_TEACHER");
 			userService.addRoleToUser("shaun@gmail.com", "ROLE_TEACHER");
 			userService.addRoleToUser("jofi@gmail.com", "ROLE_STUDENT");
-			userService.addRoleToUser("ray@gmail.com", "ROLE_ADMIN");
+			userService.addRoleToUser("ray@gmail.com", "ROLE_ADMIN");*/
 
 
 			/*calculatorService.setCalculator(new CalculatorDTO("PBE", false, "(1, 1, 1)", 3,
 					300, -0.05, 50, 1, 4, "mpirun -np 16 vasp_std"));*/
 
-			calculatorService.saveCalculator(new Calculator(1L,"PBE", false, List.of(1, 1, 1), 3,
+			/*calculatorService.saveCalculator(new Calculator(1L,"PBE", false, List.of(1, 1, 1), 3,
 					300, -0.05, 50, 1, 4, "mpirun -np 16 vasp_std",  new ArrayList<>()));
 			calculatorService.saveCalculator(new Calculator(2L,"PBE", false, List.of(1, 1, 1), 3,
-					300, -0.05, 100, 1, 4, "mpirun -np 20 vasp_std",  new ArrayList<>()));
+					300, -0.05, 100, 1, 4, "mpirun -np 20 vasp_std",  new ArrayList<>()));*/
 			/*calculatorService.saveCalculator(new Calculator(3L,"PBE", false, List.of(1, 1, 1), 3,
 					300, -0.05, 100, 1, 4, "mpirun ",  new ArrayList<>()));
 
@@ -80,8 +80,8 @@ public class FinalProjectServerApplication {
 					300, -0.05, 100, 1, 4, "1240 vasp_std",  new ArrayList<>()));
 */
 
-			Calculator calculator = calculatorService.getCalculatorById(1L);
-			Calculator calculator1 = calculatorService.getCalculatorById(2L);
+			/*Calculator calculator = calculatorService.getCalculatorById(1L);
+			Calculator calculator1 = calculatorService.getCalculatorById(2L);*/
 			/*Calculator calculator2 = calculatorService.getCalculatorById(3L);
 			Calculator calculator3 = calculatorService.getCalculatorById(4L);*/
 
@@ -92,10 +92,10 @@ public class FinalProjectServerApplication {
 			projectService.saveProject(new Project(2L, "3|4|Au|Calc2", "description2",
 					calculator, new ArrayList<>()));*/
 
-			projectService.saveProject(new ProjectDTO( "3|4|Au|Calc1", "description1",
+			/*projectService.saveProject(new ProjectDTO( "3|4|Au|Calc1", "description1",
 					1L));
 			projectService.saveProject(new ProjectDTO("3|4|Au|Calc2", "description2",
-					2L));
+					2L));*/
 
 			/*clusterService.saveCluster(new ClusterDTO("3Au", 3, -4.24721533,
 					List.of(0.02467511, -0.01682173, 0.01266294,
