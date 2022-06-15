@@ -26,7 +26,7 @@ public class ClusterService implements ClusterServiceInterface {
         newCluster.setNatoms(cluster.getNatoms());
         newCluster.setEnergy(cluster.getEnergy());
         newCluster.setForces(cluster.getForces());
-        newCluster.setMagmon(cluster.getMagmon());
+        newCluster.setMag(cluster.getMag());
         newCluster.setProject(projectRepository.findById(cluster.getProjectId()).get());
         clusterRepository.save(newCluster);
     }

@@ -18,12 +18,13 @@ public class Cluster {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String formula;
-    private int natoms;
+    private String config;
     private double energy;
+    private int natoms;
+    private String formula;
     @ElementCollection
     private List<Double> forces;
-    private double magmon;
+    private double mag;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)

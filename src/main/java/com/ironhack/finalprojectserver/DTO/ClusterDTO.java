@@ -18,6 +18,6 @@ public class ClusterDTO {
     private double energy;
     @ElementCollection
     private List<Double> forces;
-    private double magmon;
+    private double mag;
     private Long projectId;
 }
