@@ -41,10 +41,8 @@ public class CalculatorController {
     @ResponseStatus(HttpStatus.OK)
     public Integer getCountOfCalculatorById(@PathVariable(name = "id") Long calculatorId) {
         Integer count = projectRepository.countByCalculatorId(calculatorId);
-        System.out.println("CUENTA" + count);
         return projectRepository.countByCalculatorId(calculatorId);
     }
-
 
 
     @PostMapping("/calculators")
@@ -52,11 +50,6 @@ public class CalculatorController {
     public void addCalculator(@RequestBody @Valid Calculator calculator){
         calculatorService.saveCalculator(calculator);
     }
-/*    @PostMapping("/calculators/toproject")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void setCalculator(@RequestBody Long calculatorId){
-        calculatorService.setCalculator(calculatorId);
-    }*/
 
 
     @DeleteMapping("/calculators/{id}")

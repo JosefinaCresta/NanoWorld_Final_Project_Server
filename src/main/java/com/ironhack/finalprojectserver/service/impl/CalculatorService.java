@@ -46,11 +46,6 @@ public class CalculatorService implements CalculatorServiceInterface {
         }
     }
 
-/*    public void setCalculator(Long calculatorId){
-
-    }*/
-
-
 
     public void deleteCalculator(Long id) {
         Calculator calculatorFromDB = calculatorRepository.findById(id).orElseThrow(() -> new ResponseStatusException(

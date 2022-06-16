@@ -33,4 +33,17 @@ public class Calculator {
     @JsonIgnore
     @OneToMany(mappedBy = "calculator",  fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Project> projects;
+
+    public Calculator(String xc, boolean lreal, int ibrion, double encut, double ediffg, int nsw, int ispin, int ncore, String command) {
+        this.xc = xc;
+        this.lreal = lreal;
+        this.ibrion = ibrion;
+        this.encut = encut;
+        this.ediffg = ediffg;
+        this.nsw = nsw;
+        this.ispin = ispin;
+        this.ncore = ncore;
+        this.command = command;
+    }
 }
+
