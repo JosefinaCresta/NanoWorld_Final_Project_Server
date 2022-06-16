@@ -34,14 +34,13 @@ public class User {
                     "one lowercase and one uppercase letter.")
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+ /*   @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles = new ArrayList<>();
+*/
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Role role;
 
 
-/*    @JsonIgnore
-    @OneToMany
-    @JoinColumn(name="project_id")
-    private Set<Project> projects;*/
 
 
     public User(String name, String email, String password) {

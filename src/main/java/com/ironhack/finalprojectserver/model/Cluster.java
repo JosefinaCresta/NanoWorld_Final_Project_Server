@@ -20,6 +20,7 @@ public class Cluster {
     private Long id;
     private String config;
     private double energy;
+    private double energyAtom;
     private int natoms;
     private String formula;
     @ElementCollection

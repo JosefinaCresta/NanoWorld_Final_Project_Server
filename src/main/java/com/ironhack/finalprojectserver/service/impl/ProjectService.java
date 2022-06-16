@@ -36,7 +36,7 @@ public class ProjectService implements ProjectServiceInterface {
         try {
             projectRepository.save(new Project(
                     project.getTitle(),
-                    project.getDescription(),
+                    project.getDescription(),project.getCreator(),
                     calculatorFromId
             ));
         } catch (Exception e){

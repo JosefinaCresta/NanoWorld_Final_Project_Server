@@ -65,9 +65,10 @@ public class UserService implements UserServiceInterface, UserDetailsService {
         } else {
             log.info("User is found in the database: {}", email);
             Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-            user.getRoles().forEach(role -> {
+           /* user.getRoles().forEach(role -> {
                 authorities.add(new SimpleGrantedAuthority(role.getName()));
-            });
+            });*/
+            authorities.add(new SimpleGrantedAuthority(user.getRole().getName()));
             return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
         }
     }
@@ -83,7 +84,9 @@ public class UserService implements UserServiceInterface, UserDetailsService {
         log.info("Adding role {} to user {}", roleName, email);
         User user = userRepository.findByEmail(email);
         Role role = roleRepository.findByName(roleName);
-        user.getRoles().add(role);
+        /*user.getRole().add(role);*/
+        user.setRole(role);
+
         userRepository.save(user);
     }
 }

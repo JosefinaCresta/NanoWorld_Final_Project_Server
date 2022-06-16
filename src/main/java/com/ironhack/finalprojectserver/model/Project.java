@@ -22,11 +22,6 @@ public class Project {
     @NotEmpty(message = "Provide a description")
     private String description;
 
-    /*@ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "creator_id")
-    @NotEmpty(message = "Provide Creator Name")
-    private User creator;*/
-
     private String creator;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="calculator_id", nullable = true)
@@ -35,13 +30,12 @@ public class Project {
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Cluster> clusters;
 
-    public Project(String title, String description, Calculator calculator) {
+    public Project(String title, String description, String creator, Calculator calculator) {
         this.title = title;
         this.description = description;
+        this.creator = creator;
         this.calculator = calculator;
     }
-
-
 
     @Override
     public String toString() {
@@ -49,6 +43,8 @@ public class Project {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", creator='" + creator + '\'' +
+                ", calculator=" + calculator +
                 '}';
     }
 }

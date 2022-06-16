@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserVerifyDTO {
     private String name;
+    private String role;
 }

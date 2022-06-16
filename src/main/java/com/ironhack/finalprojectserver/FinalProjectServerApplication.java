@@ -52,10 +52,10 @@ public class FinalProjectServerApplication {
 						  ClusterService clusterService, CalculatorService calculatorService,
 						  CalculatorRepository calculatorRepository){
 		return args -> {
-			/*userService.saveRole(new Role(null, "ROLE_TEACHER"));
-			userService.saveRole(new Role(null, "ROLE_STUDENT"));
-			userService.saveRole(new Role(null, "ROLE_ADMIN"));
-
+			userService.saveRole(new Role(1L, "ROLE_TEACHER"));
+			userService.saveRole(new Role(2L, "ROLE_STUDENT"));
+			userService.saveRole(new Role(3L, "ROLE_ADMIN"));
+/*
 			userService.saveUser(new User(null, "Raymond", "ray@gmail.com", "P@ssw0rd", new ArrayList<>()));
 			userService.saveUser(new User(null, "Shaun", "shaun@gmail.com", "P@ssw0rd", new ArrayList<>()));
 			userService.saveUser(new User(null, "Josefina", "jofi@gmail.com", "P@ssw0rd", new ArrayList<>()));
