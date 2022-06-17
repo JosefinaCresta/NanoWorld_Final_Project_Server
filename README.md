@@ -6,6 +6,7 @@
 
 #### Fri, 17 Jun 2022
 
+Demo presentation: [*Slides*](https://slides.com/josefinacresta/dea-aa465a)
 ---
 This project has users who will have roles (of teachers and students) who will have access to the information of the other models.  the main model is the projects.  which have a title, description, creator (which in the future will be a user, that is, there will be a one-to-many relationship from user to projects).
  In addition, each projector has its calculator, which is personalized for each project.  But the same calculator configuration can be used for different projects.
@@ -76,18 +77,16 @@ This project has users who will have roles (of teachers and students) who will h
 
 # Future Work
 
-  The work has many Coming soon, like project and calculators search engines  by different attributes such as ids, titles, creators.
+More relationships between existing models and new models should be made.
+For example between teachers and students, which would be two types of users.
 
-  In addition, each user should have their pages where they have direct access to the data they provided.
+Create project repositories for users.
 
-  Teachers would have their list of projects, calculators and also their students and their respective completed projects.
+Improve the declaration of variables of each model.
 
-  And the students could have the list of their completed projects and those of their professors.
+Add more endpoints for existing and new models.
 
-  It could also have data on other nanomaterials.  Not just Nano gold.  There is also extensive information on calculations on nanoclusters or nanoparticles of silver, platinum, copper, among others.
-
-  Finally, it would be interesting to plot different selected projects on the same graph in order to compare the efficiency of their calculators. 
-    
+Carry out test.
 ## Resources
  
   * - OpenCamp Java Bootcamp Ironhack Lessons by Raymond and Shaun. Thank you very much for your help and support.
