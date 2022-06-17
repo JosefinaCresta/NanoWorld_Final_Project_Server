@@ -6,7 +6,10 @@
 
 #### Fri, 17 Jun 2022
 
-Demo presentation: [*Slides*](https://slides.com/josefinacresta/dea-aa465a)
+[*Slides* Demo Presentation: ](https://slides.com/josefinacresta/dea-aa465a)
+[_Notion_ Task: ](https://crawling-jute-cde.notion.site/14c581b7ba3b447e8cc43dd7f106b27b?v=4343c46f6a84422cbb4155f1bdda6422)
+
+
 ---
 This project has users who will have roles (of teachers and students) who will have access to the information of the other models.  the main model is the projects.  which have a title, description, creator (which in the future will be a user, that is, there will be a one-to-many relationship from user to projects).
  In addition, each projector has its calculator, which is personalized for each project.  But the same calculator configuration can be used for different projects.
