@@ -45,8 +45,8 @@ This project has users who will have roles (of teachers and students) who will h
     4. Calculator
     5. Cluster
     6. Nanoparticles
-        
-        ![imagen_intro](img/modelsDiag.png)
+
+![imagen_intro](img/modelsDiag.png)
         
         
 ## Server routes table
